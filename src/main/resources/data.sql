@@ -1,0 +1,4 @@
+-- collegues
+insert into collegue(matricule, nom, prenoms, email, date_de_naissance, photo_url) values ('8539d931fe534b57a1281afc4ea9b21f','Doe','John','john.doe@email.com','2020-04-24', 'https://randomuser.me/api/portraits/men/1.jpg');
+insert into collegue(matricule, nom, prenoms, email, date_de_naissance, photo_url) values ('dcff0dbd041346b6b37acff5b92dc20c','Renou','Antoine','antoine.renou@email.com','1994-05-17', 'https://randomuser.me/api/portraits/men/2.jpg');
+insert into collegue(matricule, nom, prenoms, email, date_de_naissance, photo_url) values ('4207a99b707c460cb295faa10a6eb163','Oddet','Rossi','rossi.oddet@email.com','2000-01-01', 'https://randomuser.me/api/portraits/men/3.jpg');

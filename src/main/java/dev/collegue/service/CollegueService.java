@@ -1,5 +1,8 @@
 package dev.collegue.service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.springframework.stereotype.Service;
 
 import dev.collegue.repository.CollegueRepository;
@@ -23,9 +26,9 @@ public class CollegueService {
 		this.collegueRepository = collegueRepository;
 	}
 
-	public String[] getMatriculesByNom(String nom) {
+	public List<String> getMatriculesByNom(String nom) {
 
-		return (String[]) collegueRepository.findByNom(nom).stream().map(c -> c.getMatricule()).toArray();
+		return collegueRepository.findByNom(nom).stream().map(c -> c.getMatricule()).collect(Collectors.toList());
 	}
 
 }

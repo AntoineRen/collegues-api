@@ -31,6 +31,14 @@ public class Collegue {
 	/**
 	 * Constructor
 	 *
+	 */
+	public Collegue() {
+
+	}
+
+	/**
+	 * Constructor
+	 *
 	 * @param id
 	 * @param matricule
 	 * @param nom
