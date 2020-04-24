@@ -2,11 +2,17 @@ package dev.collegue.controller;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.collegue.entite.Collegue;
+import dev.collegue.exception.CollegueNonTrouveException;
 import dev.collegue.service.CollegueService;
 
 /**
@@ -33,6 +39,18 @@ public class CollegueController {
 	public List<String> getMatriculesByNom(@RequestParam String nom) {
 
 		return collegueService.getMatriculesByNom(nom);
+	}
+
+	@GetMapping("{matricule}")
+	public Collegue getCollegueByMatricule(@PathVariable String matricule) {
+
+		return collegueService.getCollegueByMatricule(matricule);
+	}
+
+	@ExceptionHandler(CollegueNonTrouveException.class)
+	public ResponseEntity<String> onCollegueNonTrouveException(CollegueNonTrouveException e) {
+
+		return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
 	}
 
 }

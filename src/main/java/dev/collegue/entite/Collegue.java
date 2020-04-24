@@ -3,9 +3,6 @@ package dev.collegue.entite;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.Table;
 
 /**
@@ -16,11 +13,8 @@ import javax.persistence.Table;
  */
 @Entity
 @Table(name = "collegue")
-public class Collegue {
+public class Collegue extends BaseEntite {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
 	private String matricule;
 	private String nom;
 	private String prenoms;
@@ -33,7 +27,6 @@ public class Collegue {
 	 *
 	 */
 	public Collegue() {
-
 	}
 
 	/**
@@ -47,34 +40,14 @@ public class Collegue {
 	 * @param dateDeNaissance
 	 * @param photoUrl
 	 */
-	public Collegue(Integer id, String matricule, String nom, String prenoms, String email, LocalDate dateDeNaissance,
+	public Collegue(String matricule, String nom, String prenoms, String email, LocalDate dateDeNaissance,
 			String photoUrl) {
-		super();
-		this.id = id;
 		this.matricule = matricule;
 		this.nom = nom;
 		this.prenoms = prenoms;
 		this.email = email;
 		this.dateDeNaissance = dateDeNaissance;
 		this.photoUrl = photoUrl;
-	}
-
-	/**
-	 * Getter
-	 *
-	 * @return the id
-	 */
-	public Integer getId() {
-		return id;
-	}
-
-	/**
-	 * Setter
-	 *
-	 * @param id the id to set
-	 */
-	public void setId(Integer id) {
-		this.id = id;
 	}
 
 	/**
