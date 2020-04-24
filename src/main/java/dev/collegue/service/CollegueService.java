@@ -65,4 +65,38 @@ public class CollegueService {
 		return collegue;
 	}
 
+	@Transactional
+	public Collegue updateCollegue(CollegueDto updateCollegue) {
+
+		Optional<Collegue> searchCollegue = collegueRepository.getOneByMatricule(updateCollegue.getMatricule());
+
+		if (searchCollegue.isPresent()) {
+
+			Collegue colleguePresent = searchCollegue.get();
+
+			if (updateCollegue.getNom() != null)
+				colleguePresent.setNom(updateCollegue.getNom());
+
+			if (updateCollegue.getPrenoms() != null)
+				colleguePresent.setPrenoms(updateCollegue.getPrenoms());
+
+			if (updateCollegue.getDateDeNaissance() != null)
+				colleguePresent.setDateDeNaissance(updateCollegue.getDateDeNaissance());
+
+			if (updateCollegue.getEmail() != null)
+				colleguePresent.setEmail(updateCollegue.getEmail());
+
+			if (updateCollegue.getPhotoUrl() != null)
+				colleguePresent.setPhotoUrl(updateCollegue.getPhotoUrl());
+
+			collegueRepository.save(colleguePresent);
+
+			return colleguePresent;
+
+		} else {
+			throw new CollegueNonTrouveException("Modification impossible, collegue non trouvé");
+		}
+
+	}
+
 }

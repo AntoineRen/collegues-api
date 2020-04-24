@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
  */
 public class CollegueDto {
 
+	private String matricule;
 	@NotNull
 	private String nom;
 	@NotNull
@@ -19,6 +20,8 @@ public class CollegueDto {
 	@NotNull
 	private String photoUrl;
 
+	private String email;
+
 	/**
 	 * Constructor
 	 *
@@ -27,12 +30,33 @@ public class CollegueDto {
 	 * @param dateDeNaissance
 	 * @param photoUrl
 	 */
-	public CollegueDto(String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl) {
+	public CollegueDto(String matricule, String nom, String prenoms, LocalDate dateDeNaissance, String photoUrl,
+			String email) {
 		super();
+		this.matricule = matricule;
 		this.nom = nom;
 		this.prenoms = prenoms;
 		this.dateDeNaissance = dateDeNaissance;
 		this.photoUrl = photoUrl;
+		this.email = email;
+	}
+
+	/**
+	 * Getter
+	 *
+	 * @return the matricule
+	 */
+	public String getMatricule() {
+		return matricule;
+	}
+
+	/**
+	 * Setter
+	 *
+	 * @param matricule the matricule to set
+	 */
+	public void setMatricule(String matricule) {
+		this.matricule = matricule;
 	}
 
 	/**
@@ -105,5 +129,23 @@ public class CollegueDto {
 	 */
 	public void setPhotoUrl(String photoUrl) {
 		this.photoUrl = photoUrl;
+	}
+
+	/**
+	 * Getter
+	 *
+	 * @return the email
+	 */
+	public String getEmail() {
+		return email;
+	}
+
+	/**
+	 * Setter
+	 *
+	 * @param email the email to set
+	 */
+	public void setEmail(String email) {
+		this.email = email;
 	}
 }
