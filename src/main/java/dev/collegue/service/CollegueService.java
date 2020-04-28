@@ -54,8 +54,13 @@ public class CollegueService {
 	public Collegue postCollegue(@Valid CollegueDto newCollegue) {
 
 		StringBuilder email = new StringBuilder();
-		email.append(newCollegue.getNom().toLowerCase()).append(".").append(newCollegue.getPrenoms().toLowerCase())
-				.append("@email.com");
+
+		if (newCollegue.getEmail() == null) {
+			email.append(newCollegue.getNom().toLowerCase()).append(".").append(newCollegue.getPrenoms().toLowerCase())
+					.append("@email.com");
+		} else {
+			email.append(newCollegue.getEmail());
+		}
 
 		Collegue collegue = new Collegue(UUID.randomUUID().toString(), newCollegue.getNom(), newCollegue.getPrenoms(),
 				email.toString(), newCollegue.getDateDeNaissance(), newCollegue.getPhotoUrl());
