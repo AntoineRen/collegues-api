@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.collegue.dto.CollegueDto;
+import dev.collegue.dto.MatPhoto;
 import dev.collegue.entite.Collegue;
 import dev.collegue.exception.CollegueNonTrouveException;
 import dev.collegue.service.CollegueService;
@@ -53,6 +54,12 @@ public class CollegueController {
 	public Collegue getCollegueByMatricule(@PathVariable String matricule) {
 
 		return collegueService.getCollegueByMatricule(matricule);
+	}
+
+	@GetMapping("photos")
+	public List<MatPhoto> getColleguesPhotos() {
+
+		return collegueService.getColleguesPhotos();
 	}
 
 	@ExceptionHandler(CollegueNonTrouveException.class)

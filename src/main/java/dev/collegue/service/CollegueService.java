@@ -11,6 +11,7 @@ import javax.validation.Valid;
 import org.springframework.stereotype.Service;
 
 import dev.collegue.dto.CollegueDto;
+import dev.collegue.dto.MatPhoto;
 import dev.collegue.entite.Collegue;
 import dev.collegue.exception.CollegueNonTrouveException;
 import dev.collegue.repository.CollegueRepository;
@@ -102,6 +103,12 @@ public class CollegueService {
 			throw new CollegueNonTrouveException("Modification impossible, collegue non trouvé");
 		}
 
+	}
+
+	public List<MatPhoto> getColleguesPhotos() {
+
+		return this.collegueRepository.findAll().stream().map(c -> new MatPhoto(c.getMatricule(), c.getPhotoUrl()))
+				.collect(Collectors.toList());
 	}
 
 }
